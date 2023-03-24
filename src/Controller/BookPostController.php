@@ -30,8 +30,6 @@ class BookPostController extends AbstractController
         $book->setAuthor($data['author']);
         $book->setTitle($data['title']);
 
-        // Добавление объекта Book в EntityManager
-        $this->entityManager->persist($book);
 
         // Сохранение изменений в базе данных
         $this->entityManager->flush();

@@ -1,0 +1,56 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+book_controller_get_collection:
+    path: /getcollectionbooks
+    controller: App\Controller\BookController::getCollection
+    methods: GET COLLECTION
+    # get instruction
+    # curl http(s)://localhost:port/getcollectionbooks
+
+book_controller_add_book:
+    path: /addbook
+    controller: App\Controller\BookController::post
+    methods: POST
+    # post instruction
+    # curl -X POST http://127.0.0.1:46045/addbook(space)
+    # (space)-H 'Content-Type: application/json'((space))
+    # ((space))-d '{"author": "what u want to add","title": "what u want to add"}'
+
+book_controller_update_book:
+    path: /updatebook/{id}
+    controller: App\Controller\BookController::put
+    methods: PUT
+    # put instruction
+    # curl -X PUT -H "Content-Type: application/json"
+    # -d '{"author": "chenged Book author", "title": "chenged Book Title"}'
+    # http://127.0.0.1:45635/updatebook/1
+    # не пиши инвалидный айди, а то он сойдет с ума!!!
+
+book_controller_patch_book:
+    path: /patchbook/{id}
+    controller: App\Controller\BookController::patch
+    methods: PATCH
+    # patch instruction
+    # curl -X PATCH -H "Content-Type: application/json"
+    # -d '{"author": "chenged Book author" !OR(and only)! "title": "chenged Book Title"}'
+    # http://127.0.0.1:45635/patchbook/1
+    # не пиши инвалидный айди, а то он сойдет с ума!!!
+
+book_controller_del_book:
+    path: /deletebook/{id}
+    controller: App\Controller\BookController::delete
+    methods: DELETE
+    # delete instruction
+    # curl -X DELETE http://127.0.0.1:8000/deletebook/{id}
+
+
+book_controller_get_book:
+    path: /getbook/{id}
+    controller: App\Controller\BookController::get
+    methods: GET
+    # get instruction
+    # curl http://127.0.0.1:45635/getbook/{id}

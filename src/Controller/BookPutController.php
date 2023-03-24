@@ -37,13 +37,18 @@ class BookPutController extends AbstractController
             $book->setAuthor($data['author']);
         }
 
+        // Если в теле запроса есть параметр 'title', обновляем соответствующее поле в объекте Book
         if (isset($data['title'])) {
             $book->setTitle($data['title']);
         }
 
+        // Добавление объекта Book в EntityManager
         $this->entityManager->persist($book);
+
+        // Сохранение изменений в базе данных
         $this->entityManager->flush();
 
+        // Возврат JSON-ответа с id обновленной книги
         return $this->json(['id' => $book->getId()]);
     }
 

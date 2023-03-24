@@ -23,12 +23,15 @@ class BookDeleteController extends AbstractController
      */
     public function delete(int $id): Response
     {
+        // Поиск книги с заданным id в репозитории
         $book = $this->entityManager->getRepository(Book::class)->find($id);
 
+        // Если книга не найдена, выбрасываем исключение createNotFoundException с сообщением 'Book not found'
         if (!$book) {
             throw $this->createNotFoundException('Book not found');
         }
 
+        // Удаление книги из EntityManager и сохранение изменений в базе данных
         $this->entityManager->remove($book);
         $this->entityManager->flush();
 

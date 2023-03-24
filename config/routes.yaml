@@ -6,14 +6,14 @@ controllers:
 
 book_controller_get_collection:
     path: /getcollectionbooks
-    controller: App\Controller\BookController::getCollection
+    controller: App\Controller\BookGetCollectionController::getCollection
     methods: GET COLLECTION
     # get instruction
     # curl http(s)://localhost:port/getcollectionbooks
 
 book_controller_add_book:
     path: /addbook
-    controller: App\Controller\BookController::post
+    controller: App\Controller\BookPostController::post
     methods: POST
     # post instruction
     # curl -X POST http://127.0.0.1:46045/addbook(space)
@@ -22,7 +22,7 @@ book_controller_add_book:
 
 book_controller_update_book:
     path: /updatebook/{id}
-    controller: App\Controller\BookController::put
+    controller: App\Controller\BookPutController::put
     methods: PUT
     # put instruction
     # curl -X PUT -H "Content-Type: application/json"
@@ -32,7 +32,7 @@ book_controller_update_book:
 
 book_controller_patch_book:
     path: /patchbook/{id}
-    controller: App\Controller\BookController::patch
+    controller: App\Controller\BookPatchController::patch
     methods: PATCH
     # patch instruction
     # curl -X PATCH -H "Content-Type: application/json"
@@ -42,7 +42,7 @@ book_controller_patch_book:
 
 book_controller_del_book:
     path: /deletebook/{id}
-    controller: App\Controller\BookController::delete
+    controller: App\Controller\BookDeleteController::delete
     methods: DELETE
     # delete instruction
     # curl -X DELETE http://127.0.0.1:8000/deletebook/{id}

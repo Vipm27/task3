@@ -5,10 +5,6 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Post;
-use App\Controller\BookController;
-
 
 #[ApiResource]
 #[ORM\Entity(repositoryClass: BookRepository::class)]

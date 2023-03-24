@@ -8,8 +8,9 @@ use App\Entity\Book;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BookController extends AbstractController
+class BookDeleteController extends AbstractController
 {
+
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -18,9 +19,9 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/getbook/{id}", methods={"GET"})
+     * @Route("/deletebook/{id}", methods={"DELETE"})
      */
-    public function getItem(int $id): Response
+    public function delete(int $id): Response
     {
         $book = $this->entityManager->getRepository(Book::class)->find($id);
 
@@ -28,14 +29,9 @@ class BookController extends AbstractController
             throw $this->createNotFoundException('Book not found');
         }
 
-        $data = [
-            'id' => $book->getId(),
-            'author' => $book->getAuthor(),
-            'title' => $book->getTitle(),
-        ];
+        $this->entityManager->remove($book);
+        $this->entityManager->flush();
 
-        return $this->json($data);
+        return $this->json(['message' => 'Book deleted']);
     }
-
 }
-
